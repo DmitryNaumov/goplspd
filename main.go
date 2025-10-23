@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io"
 	"os"
 	"slices"
 
@@ -19,7 +21,11 @@ func main() {
 		dr  DriverResponse
 	)
 
-	if err := json.NewDecoder(os.Stdin).Decode(&req); err != nil {
+	b, err := io.ReadAll(os.Stdin)
+	if err != nil {
+		panic(err)
+	}
+	if err := json.NewDecoder(bytes.NewReader(b)).Decode(&req); err != nil {
 		panic(err)
 	}
 
