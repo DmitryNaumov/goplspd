@@ -1,4 +1,4 @@
-module github.com/larynjahor/spd
+module github.com/DmitryNaumov/goplspd
 
 go 1.22.4
 

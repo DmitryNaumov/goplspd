@@ -1,13 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"slices"
 
 	_ "net/http/pprof"
 
+	"github.com/DmitryNaumov/goplspd/gopackages"
 	"github.com/goccy/go-json"
-	"github.com/larynjahor/spd/gopackages"
 	"golang.org/x/tools/go/packages"
 )
 
@@ -26,6 +27,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Println("env:", env)
+	fmt.Println("args:", os.Args)
 
 	if !slices.Contains(os.Args, "./...") {
 		dr.NotHandled = true
